@@ -1,0 +1,210 @@
+{% extends "base_soc.html" %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>SOC Dashboard | CyberShield Africa</title>
+
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: #0b0f19;
+            color: #e6e6e6;
+        }
+
+        /* TOP BAR */
+        .topbar {
+            background: #111827;
+            padding: 15px 25px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid #1f2937;
+        }
+
+        .topbar h2 {
+            margin: 0;
+            color: #00d4ff;
+        }
+
+        .nav a {
+            color: #e6e6e6;
+            margin-left: 15px;
+            text-decoration: none;
+            font-size: 14px;
+        }
+
+        .nav a:hover {
+            color: #00d4ff;
+        }
+
+        /* WELCOME */
+        .welcome {
+            padding: 20px 25px;
+        }
+
+        .welcome h1 {
+            margin: 0;
+            font-size: 22px;
+        }
+
+        .welcome p {
+            color: #9ca3af;
+        }
+
+        /* CARDS */
+        .cards {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 15px;
+            padding: 20px 25px;
+        }
+
+        .card {
+            background: #111827;
+            padding: 20px;
+            border-radius: 10px;
+            border: 1px solid #1f2937;
+        }
+
+        .card h3 {
+            margin: 0;
+            color: #9ca3af;
+            font-size: 14px;
+        }
+
+        .card p {
+            font-size: 26px;
+            margin: 10px 0 0;
+            color: #00d4ff;
+        }
+
+        /* ACTIONS */
+        .actions {
+            padding: 0 25px 20px;
+        }
+
+        .btn {
+            padding: 10px 15px;
+            background: #00d4ff;
+            border: none;
+            border-radius: 6px;
+            color: #000;
+            font-weight: bold;
+            text-decoration: none;
+            margin-right: 10px;
+        }
+
+        .btn:hover {
+            background: #00b2d6;
+        }
+
+        /* FEED */
+        .feed {
+            margin: 20px 25px;
+            background: #111827;
+            border-radius: 10px;
+            padding: 15px;
+            border: 1px solid #1f2937;
+        }
+
+        .feed h3 {
+            color: #00d4ff;
+            margin-top: 0;
+        }
+
+        .incident {
+            padding: 10px;
+            border-bottom: 1px solid #1f2937;
+            font-size: 14px;
+        }
+
+        .badge {
+            padding: 3px 8px;
+            border-radius: 5px;
+            font-size: 12px;
+            margin-left: 10px;
+        }
+
+        .low { background: green; }
+        .medium { background: orange; }
+        .high { background: red; }
+
+    </style>
+</head>
+
+<body>
+
+<!-- TOP BAR -->
+<div class="topbar">
+    <h2>🛡 CyberShield SOC</h2>
+
+    <div class="nav">
+        <a href="/dashboard">Dashboard</a>
+        <a href="/report">Report</a>
+        <a href="/my_reports">My Reports</a>
+        <a href="/logout">Logout</a>
+    </div>
+</div>
+
+<!-- WELCOME -->
+<div class="welcome">
+    <h1>Welcome {{ user }} 👋</h1>
+    <p>Cyber Fraud Intelligence & Incident Monitoring Center</p>
+</div>
+
+<!-- METRICS -->
+<div class="cards">
+
+    <div class="card">
+        <h3>Total Incidents</h3>
+        <p>{{ total }}</p>
+    </div>
+
+    <div class="card">
+        <h3>Pending</h3>
+        <p>{{ pending }}</p>
+    </div>
+
+    <div class="card">
+        <h3>Investigating</h3>
+        <p>{{ investigating }}</p>
+    </div>
+
+    <div class="card">
+        <h3>Resolved</h3>
+        <p>{{ resolved }}</p>
+    </div>
+
+</div>
+
+<!-- ACTIONS -->
+<div class="actions">
+    <a class="btn" href="/report">+ New Incident</a>
+    <a class="btn" href="/my_reports">My Reports</a>
+</div>
+
+<!-- LIVE FEED -->
+<div class="feed">
+    <h3>Live Incident Feed</h3>
+
+    <div class="incident">
+        Phishing attempt detected in system logs
+        <span class="badge medium">MEDIUM</span>
+    </div>
+
+    <div class="incident">
+        SIM Swap fraud reported by user
+        <span class="badge high">HIGH</span>
+    </div>
+
+    <div class="incident">
+        OTP scam awareness alert issued
+        <span class="badge low">LOW</span>
+    </div>
+
+</div>
+
+</body>
+</html>

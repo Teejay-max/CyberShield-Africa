@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Search Cases</title>
+</head>
+<body>
+
+<h2>Search Results for "{{ query }}"</h2>
+
+<form method="GET" action="/search">
+    <input type="text" name="q" placeholder="Search case, fraud type, user, status">
+    <button type="submit">Search</button>
+</form>
+
+<hr>
+
+<table border="1">
+    <tr>
+        <th>ID</th>
+        <th>User</th>
+        <th>Fraud Type</th>
+        <th>Status</th>
+        <th>Case ID</th>
+        <th>Date</th>
+    </tr>
+
+    {% for r in results %}
+    <tr>
+        <td>{{ r[0] }}</td>
+        <td>{{ r[1] }}</td>
+        <td>{{ r[2] }}</td>
+        <td>{{ r[4] }}</td>
+        <td>{{ r[5] }}</td>
+        <td>{{ r[6] }}</td>
+    </tr>
+    {% endfor %}
+</table>
+
+</body>
+</html>

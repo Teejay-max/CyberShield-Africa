@@ -1,0 +1,19 @@
+<tr>
+  <th>ID</th>
+  <th>Fraud Type</th>
+  <th>Description</th>
+  <th>Status</th>
+  <th>Case ID</th>
+  <th>Created At</th>
+</tr>
+
+{% for r in reports %}
+<tr>
+  <td>{{ r[0] }}</td>
+  <td>{{ r[1] }}</td>
+  <td>{{ r[2] }}</td>
+  <td>{{ r[3] }}</td>
+  <td>{{ r[4] }}</td>
+  <td>{{ r[5] }}</td>
+</tr>
+{% endfor %}

@@ -1,0 +1,22 @@
+<h1>Cyber Fraud Types</h1>
+
+
+<h3>Phishing</h3>
+
+<p>
+Fraudsters create fake websites or messages to steal credentials.
+</p>
+
+
+<h3>SIM Swap</h3>
+
+<p>
+Criminals transfer your phone number to another SIM card.
+</p>
+
+
+<h3>OTP Fraud</h3>
+
+<p>
+Never share one-time passwords.
+</p>

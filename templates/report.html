@@ -1,0 +1,54 @@
+{% extends "base_public.html" %}
+
+
+{% block content %}
+
+
+<div class="card">
+
+
+<h1>
+Report Cyber Fraud
+</h1>
+
+
+<form method="POST">
+
+
+<input 
+name="fraud_type"
+placeholder="Fraud Type"
+required>
+
+
+<textarea
+
+name="description"
+
+placeholder="Explain what happened"
+
+rows="6"
+
+required>
+
+</textarea>
+
+
+
+<button>
+
+Submit Report
+
+</button>
+
+
+
+</form>
+
+
+
+</div>
+
+
+
+{% endblock %}

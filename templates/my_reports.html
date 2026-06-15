@@ -1,0 +1,75 @@
+{% extends "base_soc.html" %}
+
+
+{% block content %}
+
+
+<div class="card">
+
+
+<h1>
+My Fraud Reports
+</h1>
+
+
+
+<table border="1" width="100%">
+
+
+<tr>
+
+<th>
+Case ID
+</th>
+
+
+<th>
+Fraud Type
+</th>
+
+
+<th>
+Status
+</th>
+
+
+</tr>
+
+
+
+{% for r in reports %}
+
+
+<tr>
+
+<td>
+{{r[4]}}
+</td>
+
+
+<td>
+{{r[1]}}
+</td>
+
+
+<td>
+{{r[3]}}
+</td>
+
+
+</tr>
+
+
+
+{% endfor %}
+
+
+
+</table>
+
+
+</div>
+
+
+
+{% endblock %}

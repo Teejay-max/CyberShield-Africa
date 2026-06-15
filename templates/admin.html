@@ -1,0 +1,22 @@
+{% extends "base_soc.html" %}
+<h2>Admin Panel - All Reports</h2>
+
+<table border="1">
+<tr>
+  <th>User</th>
+  <th>Fraud Type</th>
+  <th>Description</th>
+  <th>Status</th>
+  <th>Case ID</th>
+</tr>
+
+{% for r in reports %}
+<tr>
+  <td>{{ r[1] }}</td>
+  <td>{{ r[2] }}</td>
+  <td>{{ r[3] }}</td>
+  <td>{{ r[4] }}</td>
+  <td>{{ r[5] }}</td>
+</tr>
+{% endfor %}
+</table>
