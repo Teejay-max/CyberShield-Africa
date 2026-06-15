@@ -1,34 +1,35 @@
-<a href="/intel">Intelligence Dashboard</a>
+{% extends "base_soc.html" %}
 
-<!DOCTYPE html>
-<html>
-<head>
-    <title>CyberShield Intelligence</title>
-</head>
-<body>
+{% block content %}
 
-<h1>CyberShield Intelligence Dashboard</h1>
+<h2 style="padding:20px;">CyberShield Intelligence Dashboard</h2>
 
-<div>
-    <h3>Total Cases: {{ total }}</h3>
-    <h3>Pending: {{ pending }}</h3>
-    <h3>Investigating: {{ investigating }}</h3>
-    <h3>Resolved: {{ resolved }}</h3>
+<div class="cards">
+
+    <div class="card">
+        <h3>Total</h3>
+        <p>{{ total }}</p>
+    </div>
+
+    <div class="card">
+        <h3>Pending</h3>
+        <p>{{ pending }}</p>
+    </div>
+
+    <div class="card">
+        <h3>Investigating</h3>
+        <p>{{ investigating }}</p>
+    </div>
+
+    <div class="card">
+        <h3>Resolved</h3>
+        <p>{{ resolved }}</p>
+    </div>
+
 </div>
 
-<hr>
+<div style="padding:20px;">
+    <a class="btn" href="/admin">Go to Admin Panel</a>
+</div>
 
-<a href="/admin">Go to Admin Panel</a>
-
-</body>
-</html>
-
-<td>
-    {% if r[6] == "HIGH" %}
-        <span class="badge" style="background:#7f1d1d;color:#fecaca;">HIGH</span>
-    {% elif r[6] == "MEDIUM" %}
-        <span class="badge" style="background:#78350f;color:#fde68a;">MEDIUM</span>
-    {% else %}
-        <span class="badge" style="background:#064e3b;color:#34d399;">LOW</span>
-    {% endif %}
-</td>
+{% endblock %}

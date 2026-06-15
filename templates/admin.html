@@ -1,22 +1,27 @@
 {% extends "base_soc.html" %}
-<h2>Admin Panel - All Reports</h2>
 
-<table border="1">
-<tr>
-  <th>User</th>
-  <th>Fraud Type</th>
-  <th>Description</th>
-  <th>Status</th>
-  <th>Case ID</th>
-</tr>
+{% block content %}
 
-{% for r in reports %}
-<tr>
-  <td>{{ r[1] }}</td>
-  <td>{{ r[2] }}</td>
-  <td>{{ r[3] }}</td>
-  <td>{{ r[4] }}</td>
-  <td>{{ r[5] }}</td>
-</tr>
-{% endfor %}
+<h2 style="padding:20px;">🛡 Admin Panel - All Reports</h2>
+
+<table style="width:95%; margin:20px; border-collapse:collapse; color:white;">
+    <tr style="background:#111827;">
+        <th style="padding:10px;">User</th>
+        <th style="padding:10px;">Fraud Type</th>
+        <th style="padding:10px;">Description</th>
+        <th style="padding:10px;">Status</th>
+        <th style="padding:10px;">Case ID</th>
+    </tr>
+
+    {% for r in reports %}
+    <tr style="border-bottom:1px solid #1f2937;">
+        <td style="padding:10px;">{{ r[1] }}</td>
+        <td style="padding:10px;">{{ r[2] }}</td>
+        <td style="padding:10px;">{{ r[3] }}</td>
+        <td style="padding:10px;">{{ r[4] }}</td>
+        <td style="padding:10px;">{{ r[5] }}</td>
+    </tr>
+    {% endfor %}
 </table>
+
+{% endblock %}

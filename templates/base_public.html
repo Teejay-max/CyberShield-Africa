@@ -1,8 +1,98 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+    <meta charset="UTF-8">
     <title>{% block title %}CyberShield Africa{% endblock %}</title>
+
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: #0b0f19;
+            color: #e5e7eb;
+        }
+
+        /* NAV */
+        nav {
+            background: #111827;
+            padding: 15px 20px;
+            display: flex;
+            gap: 15px;
+            border-bottom: 1px solid #1f2937;
+        }
+
+        nav a {
+            color: #e5e7eb;
+            text-decoration: none;
+            font-size: 14px;
+        }
+
+        nav a:hover {
+            color: #00d4ff;
+        }
+
+        /* HERO SECTION SUPPORT */
+        .hero {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 60px 40px;
+            background: url("https://images.unsplash.com/photo-1558494949-ef010cbdcc31") no-repeat center center;
+            background-size: cover;
+            min-height: 60vh;
+        }
+
+        .hero-text {
+            max-width: 600px;
+            background: rgba(0,0,0,0.6);
+            padding: 20px;
+            border-radius: 10px;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 10px 15px;
+            background: #00d4ff;
+            color: black;
+            text-decoration: none;
+            border-radius: 6px;
+            margin-top: 10px;
+        }
+
+        .btn:hover {
+            background: #00b2d6;
+        }
+
+        /* CARDS */
+        .cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 15px;
+            padding: 20px;
+        }
+
+        .card {
+            background: #111827;
+            padding: 15px;
+            border-radius: 10px;
+            border: 1px solid #1f2937;
+        }
+
+        /* SECTION */
+        section {
+            padding: 30px;
+        }
+
+        /* FOOTER */
+        footer {
+            text-align: center;
+            padding: 20px;
+            color: #6b7280;
+            font-size: 12px;
+        }
+    </style>
 </head>
+
 <body>
 
 <nav>
@@ -13,9 +103,11 @@
     <a href="/register">Register</a>
 </nav>
 
-<hr>
-
 {% block content %}{% endblock %}
+
+<footer>
+    CyberShield Africa © 2026 | Cyber Fraud Awareness Platform
+</footer>
 
 </body>
 </html>

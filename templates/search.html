@@ -1,40 +1,113 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Search Cases</title>
-</head>
-<body>
+{% extends "base_soc.html" %}
 
-<h2>Search Results for "{{ query }}"</h2>
+{% block title %}Search Cases | CyberShield Africa{% endblock %}
 
-<form method="GET" action="/search">
-    <input type="text" name="q" placeholder="Search case, fraud type, user, status">
-    <button type="submit">Search</button>
-</form>
+{% block content %}
 
-<hr>
+<style>
+.search-box {
+    padding: 20px;
+}
 
-<table border="1">
-    <tr>
-        <th>ID</th>
-        <th>User</th>
-        <th>Fraud Type</th>
-        <th>Status</th>
-        <th>Case ID</th>
-        <th>Date</th>
-    </tr>
+.search-form {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+}
 
-    {% for r in results %}
-    <tr>
-        <td>{{ r[0] }}</td>
-        <td>{{ r[1] }}</td>
-        <td>{{ r[2] }}</td>
-        <td>{{ r[4] }}</td>
-        <td>{{ r[5] }}</td>
-        <td>{{ r[6] }}</td>
-    </tr>
-    {% endfor %}
-</table>
+.search-form input {
+    flex: 1;
+    padding: 10px;
+    border-radius: 6px;
+    border: 1px solid #1f2937;
+    background: #0b1220;
+    color: white;
+}
 
-</body>
-</html>
+.search-form button {
+    padding: 10px 15px;
+    background: #00d4ff;
+    border: none;
+    border-radius: 6px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.search-form button:hover {
+    background: #00b2d6;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    background: #111827;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+th, td {
+    padding: 12px;
+    border-bottom: 1px solid #1f2937;
+    text-align: left;
+    font-size: 14px;
+}
+
+th {
+    background: #0f172a;
+    color: #00d4ff;
+}
+
+tr:hover {
+    background: #0b1220;
+}
+
+.empty {
+    padding: 20px;
+    color: #9ca3af;
+}
+</style>
+
+<div class="search-box">
+
+    <h2>🔍 Search Incident Records</h2>
+
+    <form class="search-form" method="GET" action="/search">
+        <input type="text" name="q" placeholder="Search by case ID, fraud type, user, status...">
+        <button type="submit">Search</button>
+    </form>
+
+    <h3>Results for "{{ query }}"</h3>
+
+    {% if results and results|length > 0 %}
+
+    <table>
+        <tr>
+            <th>ID</th>
+            <th>User</th>
+            <th>Fraud Type</th>
+            <th>Status</th>
+            <th>Case ID</th>
+            <th>Date</th>
+        </tr>
+
+        {% for r in results %}
+        <tr>
+            <td>{{ r[0] }}</td>
+            <td>{{ r[1] }}</td>
+            <td>{{ r[2] }}</td>
+            <td>{{ r[4] }}</td>
+            <td>{{ r[5] }}</td>
+            <td>{{ r[6] }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+
+    {% else %}
+        <div class="empty">
+            No records found. Try another search term.
+        </div>
+    {% endif %}
+
+</div>
+
+{% endblock %}

@@ -1,54 +1,95 @@
 {% extends "base_public.html" %}
 
+{% block title %}Report Incident | CyberShield Africa{% endblock %}
 
 {% block content %}
 
+<style>
+.report-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 40px 20px;
+}
 
-<div class="card">
+.report-box {
+    background: #111827;
+    width: 500px;
+    padding: 25px;
+    border-radius: 12px;
+    border: 1px solid #1f2937;
+    box-shadow: 0 0 20px rgba(0, 212, 255, 0.06);
+}
 
+.report-box h1 {
+    color: #00d4ff;
+    text-align: center;
+    margin-bottom: 20px;
+}
 
-<h1>
-Report Cyber Fraud
-</h1>
+.report-box input,
+.report-box textarea,
+.report-box select {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 12px;
+    border-radius: 6px;
+    border: 1px solid #1f2937;
+    background: #0b1220;
+    color: white;
+    outline: none;
+}
 
+.report-box textarea {
+    resize: none;
+}
 
-<form method="POST">
+.report-box button {
+    width: 100%;
+    padding: 10px;
+    background: #00d4ff;
+    border: none;
+    border-radius: 6px;
+    font-weight: bold;
+    cursor: pointer;
+}
 
+.report-box button:hover {
+    background: #00b2d6;
+}
+</style>
 
-<input 
-name="fraud_type"
-placeholder="Fraud Type"
-required>
+<div class="report-container">
+    <div class="report-box">
 
+        <h1>🚨 Report Cyber Fraud</h1>
 
-<textarea
+        <form method="POST">
 
-name="description"
+            <input 
+                name="fraud_type"
+                placeholder="Fraud Type (e.g. Phishing, SIM Swap)"
+                required>
 
-placeholder="Explain what happened"
+            <select name="priority">
+                <option value="Low">Low Priority</option>
+                <option value="Medium" selected>Medium Priority</option>
+                <option value="High">High Priority</option>
+            </select>
 
-rows="6"
+            <textarea
+                name="description"
+                placeholder="Describe what happened in detail..."
+                rows="6"
+                required></textarea>
 
-required>
+            <button type="submit">
+                Submit Report
+            </button>
 
-</textarea>
+        </form>
 
-
-
-<button>
-
-Submit Report
-
-</button>
-
-
-
-</form>
-
-
-
+    </div>
 </div>
-
-
 
 {% endblock %}

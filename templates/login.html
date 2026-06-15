@@ -1,14 +1,55 @@
-<h2>Login</h2>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}SOC Platform{% endblock %}</title>
 
-<form method="POST">
-    <input name="email" placeholder="Email" required>
-    <br><br>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: radial-gradient(circle at top, #0b1220, #05070d);
+            color: #e5e7eb;
+        }
 
-    <input name="password" type="password" placeholder="Password" required>
-    <br><br>
+        nav {
+            background: #0f172a;
+            padding: 15px 25px;
+            display: flex;
+            gap: 15px;
+            border-bottom: 1px solid #1f2937;
+        }
 
-    <button type="submit">Login</button>
-</form>
+        nav a {
+            color: #e5e7eb;
+            text-decoration: none;
+            font-size: 14px;
+        }
 
-<br>
-<a href="/register">Create Account</a>
+        nav a:hover {
+            color: #00d4ff;
+        }
+
+        .container {
+            padding: 20px;
+        }
+    </style>
+</head>
+
+<body>
+
+<nav>
+    <a href="/dashboard">Dashboard</a>
+    <a href="/report">New Incident</a>
+    <a href="/my_reports">My Reports</a>
+    <a href="/intel">Intel</a>
+    <a href="/learn">Learn</a>
+    <a href="/logout">Logout</a>
+</nav>
+
+<div class="container">
+    {% block content %}{% endblock %}
+</div>
+
+</body>
+</html>

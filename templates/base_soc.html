@@ -7,7 +7,7 @@
         body {
             margin: 0;
             font-family: Arial;
-            background: #0b0f19;
+            background: radial-gradient(circle, #0b1220, #05070d);
             color: white;
         }
 
@@ -25,6 +25,57 @@
         nav a:hover {
             color: cyan;
         }
+
+        .welcome { padding: 20px; }
+
+        .cards {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 15px;
+            padding: 20px;
+        }
+
+        .card {
+            background: #111827;
+            padding: 15px;
+            border-radius: 10px;
+            border: 1px solid #1f2937;
+        }
+
+        .card p {
+            font-size: 22px;
+            color: cyan;
+        }
+
+        .actions {
+            padding: 0 20px 20px;
+        }
+
+        .btn {
+            background: cyan;
+            padding: 10px;
+            text-decoration: none;
+            color: black;
+            font-weight: bold;
+            margin-right: 10px;
+            border-radius: 6px;
+        }
+
+        .feed {
+            margin: 20px;
+            padding: 15px;
+            background: #111827;
+            border-radius: 10px;
+        }
+
+        .incident {
+            padding: 10px;
+            border-bottom: 1px solid #333;
+        }
+
+        .high { color: red; }
+        .medium { color: orange; }
+        .low { color: green; }
     </style>
 </head>
 
@@ -32,7 +83,7 @@
 
 <nav>
     <a href="/dashboard">Dashboard</a>
-    <a href="/report">New Incident</a>
+    <a href="/report">Report</a>
     <a href="/my_reports">My Reports</a>
     <a href="/logout">Logout</a>
 </nav>

@@ -1,204 +1,74 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>SOC Dashboard | CyberShield Africa</title>
+{% extends "base_soc.html" %}
 
-    <style>
-        body {
-            margin: 0;
-            font-family: Arial, sans-serif;
-            background: #0b0f19;
-            color: #e5e7eb;
-        }
+{% block title %}SOC Dashboard{% endblock %}
 
-        /* TOP BAR */
-        .topbar {
-            background: #111827;
-            padding: 15px 25px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            border-bottom: 1px solid #1f2937;
-        }
+{% block content %}
 
-        .topbar h2 {
-            margin: 0;
-            color: #00d4ff;
-        }
+<style>
+.welcome {
+    padding: 20px;
+}
 
-        .nav a {
-            color: #e5e7eb;
-            margin-left: 15px;
-            text-decoration: none;
-            font-size: 14px;
-        }
+.cards {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 15px;
+    padding: 20px;
+}
 
-        .nav a:hover {
-            color: #00d4ff;
-        }
+.card {
+    background: #111827;
+    padding: 15px;
+    border-radius: 10px;
+}
 
-        /* WELCOME */
-        .welcome {
-            padding: 20px 25px;
-        }
+.card h3 {
+    margin: 0;
+    font-size: 13px;
+    color: #9ca3af;
+}
 
-        .welcome h1 {
-            margin: 0;
-            font-size: 22px;
-        }
+.card p {
+    font-size: 24px;
+    color: #00d4ff;
+}
 
-        .welcome p {
-            color: #9ca3af;
-        }
+.feed {
+    margin: 20px;
+    padding: 15px;
+    background: #0f172a;
+    border-radius: 10px;
+}
 
-        /* CARDS */
-        .cards {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 15px;
-            padding: 20px 25px;
-        }
+.badge {
+    float: right;
+    padding: 4px 8px;
+    border-radius: 5px;
+}
 
-        .card {
-            background: #111827;
-            padding: 15px;
-            border-radius: 10px;
-            border: 1px solid #1f2937;
-        }
+.high { background: #dc2626; }
+.medium { background: #f59e0b; }
+.low { background: #16a34a; }
+</style>
 
-        .card h3 {
-            margin: 0;
-            font-size: 13px;
-            color: #9ca3af;
-        }
+<div class="welcome">
+    <h1>Welcome {{ user }} 👋</h1>
+    <p>Cyber Fraud Intelligence & Monitoring Center</p>
+</div>
 
-        .card p {
-            font-size: 22px;
-            margin-top: 10px;
-            color: #00d4ff;
-        }
+<div class="cards">
+    <div class="card"><h3>Total</h3><p>{{ total }}</p></div>
+    <div class="card"><h3>Pending</h3><p>{{ pending }}</p></div>
+    <div class="card"><h3>Investigating</h3><p>{{ investigating }}</p></div>
+    <div class="card"><h3>Resolved</h3><p>{{ resolved }}</p></div>
+</div>
 
-        /* ACTIONS */
-        .actions {
-            padding: 0 25px 20px;
-        }
+<div class="feed">
+    <h3>Live Incident Feed</h3>
 
-        .btn {
-            background: #00d4ff;
-            color: #000;
-            padding: 10px 14px;
-            border-radius: 6px;
-            text-decoration: none;
-            font-weight: bold;
-            margin-right: 10px;
-        }
+    <div>SIM Swap Fraud <span class="badge high">HIGH</span></div>
+    <div>Phishing Attempt <span class="badge medium">MEDIUM</span></div>
+    <div>OTP Scam Alert <span class="badge low">LOW</span></div>
+</div>
 
-        .btn:hover {
-            background: #00b2d6;
-        }
-
-        /* FEED */
-        .feed {
-            margin: 20px 25px;
-            background: #111827;
-            padding: 15px;
-            border-radius: 10px;
-            border: 1px solid #1f2937;
-        }
-
-        .feed h3 {
-            margin-top: 0;
-            color: #00d4ff;
-        }
-
-        .incident {
-            padding: 10px;
-            border-bottom: 1px solid #1f2937;
-            font-size: 14px;
-        }
-
-        .badge {
-            float: right;
-            padding: 3px 8px;
-            border-radius: 5px;
-            font-size: 12px;
-        }
-
-        .high { background: #dc2626; }
-        .medium { background: #f59e0b; }
-        .low { background: #16a34a; }
-    </style>
-</head>
-
-<body>
-
-    <!-- TOP BAR -->
-    <div class="topbar">
-        <h2>🛡 CyberShield SOC</h2>
-
-        <div class="nav">
-            <a href="/dashboard">Dashboard</a>
-            <a href="/report">Report</a>
-            <a href="/my_reports">My Reports</a>
-            <a href="/logout">Logout</a>
-        </div>
-    </div>
-
-    <!-- WELCOME -->
-    <div class="welcome">
-        <h1>Welcome {{ user }} 👋</h1>
-        <p>Cyber Fraud Intelligence & Incident Monitoring Center</p>
-    </div>
-
-    <!-- METRICS -->
-    <div class="cards">
-        <div class="card">
-            <h3>Total Incidents</h3>
-            <p>{{ total }}</p>
-        </div>
-
-        <div class="card">
-            <h3>Pending</h3>
-            <p>{{ pending }}</p>
-        </div>
-
-        <div class="card">
-            <h3>Investigating</h3>
-            <p>{{ investigating }}</p>
-        </div>
-
-        <div class="card">
-            <h3>Resolved</h3>
-            <p>{{ resolved }}</p>
-        </div>
-    </div>
-
-    <!-- ACTIONS -->
-    <div class="actions">
-        <a class="btn" href="/report">+ New Incident</a>
-        <a class="btn" href="/my_reports">My Reports</a>
-    </div>
-
-    <!-- LIVE FEED -->
-    <div class="feed">
-        <h3>Live Incident Feed</h3>
-
-        <div class="incident">
-            SIM Swap Fraud detected — User report received
-            <span class="badge high">HIGH</span>
-        </div>
-
-        <div class="incident">
-            Phishing attempt flagged in system logs
-            <span class="badge medium">MEDIUM</span>
-        </div>
-
-        <div class="incident">
-            OTP scam awareness alert issued
-            <span class="badge low">LOW</span>
-        </div>
-    </div>
-
-</body>
-</html>
+{% endblock %}
