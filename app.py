@@ -83,7 +83,11 @@ def login():
         conn = sqlite3.connect("cybershield.db")
         cursor = conn.cursor()
 
-        cursor.execute("SELECT * FROM users WHERE email = ?", (request.form["email"].lower(),))
+        cursor.execute(
+            "SELECT * FROM users WHERE email = ?",
+            (request.form["email"].lower(),)
+        )
+
         user = cursor.fetchone()
         conn.close()
 
@@ -98,7 +102,7 @@ def login():
     return render_template("login.html")
 
 
-# ================= DASHBOARD =================
+# ================= DASHBOARD (SOC INTELLIGENCE UPGRADE) =================
 @app.route("/dashboard")
 def dashboard():
     if not session.get("logged_in"):
@@ -119,6 +123,16 @@ def dashboard():
     cursor.execute("SELECT COUNT(*) FROM reports WHERE status='Resolved'")
     resolved = cursor.fetchone()[0]
 
+    # SOC INTELLIGENCE: Top fraud types
+    cursor.execute("""
+        SELECT fraud_type, COUNT(*)
+        FROM reports
+        GROUP BY fraud_type
+        ORDER BY COUNT(*) DESC
+        LIMIT 5
+    """)
+    top_frauds = cursor.fetchall()
+
     conn.close()
 
     return render_template(
@@ -127,7 +141,8 @@ def dashboard():
         total=total,
         pending=pending,
         investigating=investigating,
-        resolved=resolved
+        resolved=resolved,
+        top_frauds=top_frauds
     )
 
 
@@ -145,7 +160,10 @@ def report():
         cursor = conn.cursor()
 
         cursor.execute("""
-        INSERT INTO reports (user, fraud_type, priority, description, status, case_id, created_at)
+        INSERT INTO reports (
+            user, fraud_type, priority,
+            description, status, case_id, created_at
+        )
         VALUES (?, ?, ?, ?, ?, ?, ?)
         """, (
             session["user"],
@@ -199,5 +217,6 @@ def logout():
     return redirect("/")
 
 
+# ================= RUN =================
 if __name__ == "__main__":
     app.run(debug=True)
